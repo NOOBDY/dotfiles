@@ -13,6 +13,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'on': [] }
+Plug 'evanleck/vim-svelte'
 
 Plug 'jiangmiao/auto-pairs'
 

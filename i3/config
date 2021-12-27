@@ -296,3 +296,4 @@ exec_always source ~/.fehbg
 exec_always picom --config ~/.config/picom/picom.conf --experimental-backends
 exec_always ibus-daemon -drxR
 exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
+exec xinput disable "ELAN Touchscreen"

@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
-KBD=$(/usr/bin/xkblayout-state print '%s')
-echo $KBD
+if [[ "$(ibus engine)" == "xkb:us::eng" ]]; then
+    echo "en"
+else
+    echo "中"
+fi
+
+#echo "en"
+#KBD=$(/usr/bin/xkblayout-state print '%s')
+#echo $KBD
 
