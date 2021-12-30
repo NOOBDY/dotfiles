@@ -288,7 +288,6 @@ bindsym Shift+Print exec --no-startup-id maim -o --select | xclip -selection cli
 bindsym Mod1+Print exec --no-startup-id maim -o ~/Pictures/Screenshots/$(date +%s).png
 bindsym Mod1+Shift+Print exec --no-startup-id maim -o --select ~/Pictures/Screenshots/$(date +%s).png
 
-exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
