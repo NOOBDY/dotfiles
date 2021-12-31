@@ -7,6 +7,10 @@ floating_modifier $mod
 input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
     natural_scroll enabled
     tap enabled
+    accel_profile adaptive
+    pointer_accel 0.3
+    # accel_profile flat
+    # pointer_accel 1
 }
 
 bindsym $mod+Return exec kitty
@@ -155,7 +159,7 @@ bar {
     workspace_buttons yes
     position top
 #        status_command i3status
-#	    height 25
+    height 20
 }
 
 # bar {
@@ -245,17 +249,18 @@ bindsym $mod+t exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 # screenshot
+bindsym Print exec grim - | wl-copy
+bindsym Shift+Print exec grim -g "$(slurp -d)" - | wl-copy
 
-bindsym Print exec --no-startup-id maim -o | xclip -selection clipboard -t image/png
-bindsym Shift+Print exec --no-startup-id maim -o --select | xclip -selection clipboard -t image/png
+bindsym Mod1+Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
 
-bindsym Mod1+Print exec --no-startup-id maim -o ~/Pictures/Screenshots/$(date +%s).png
-bindsym Mod1+Shift+Print exec --no-startup-id maim -o --select ~/Pictures/Screenshots/$(date +%s).png
-
+# startup command
 exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
 exec_always ibus-daemon -drxR
 exec swaybg --image Pictures/wp4892354.jpg
+exec systemctl --user import-environment
 exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
 exec xinput disable "ELAN Touchscreen"

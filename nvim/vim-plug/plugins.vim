@@ -15,6 +15,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'on': [] }
 Plug 'evanleck/vim-svelte'
 
+Plug 'ap/vim-css-color'
+
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
