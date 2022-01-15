@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "memory", "cpu", "temperature", "backlight", "sway/language", "battery"],
+    "modules-right": ["tray", "pulseaudio", "network", "memory", "cpu", "temperature", "backlight", "battery"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -124,7 +124,7 @@
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": " {bandwidthUpBits}  {bandwidthDownBits}"
+        "format-alt": "{bandwidthUpBits}  {bandwidthDownBits}  "
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

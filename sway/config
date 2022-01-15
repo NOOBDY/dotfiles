@@ -152,8 +152,6 @@ client.unfocused        $darkblue   $darkblue   $grey       $purple     $darkgre
 client.focused_inactive $darkblue   $darkblue   $grey       $purple     $black
 client.urgent           $urgentred  $urgentred  $white      $purple     $yellowbrown
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
     swaybar_command waybar
     workspace_buttons yes
@@ -161,33 +159,6 @@ bar {
 #        status_command i3status
     height 20
 }
-
-# bar {
-#     font pango:Cascadia Mono, Font Awesome 10
-#     position top
-#     # i3bar_command i3bar --transparency
-#     # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-#     # reference: https://i3wm.org/docs/userguide.html#_tray_output
-#     tray_output primary
-#     tray_padding 0
-#
-#     # When strip_workspace_numbers is set to yes,
-#     # any workspace that has a name of the form
-#     # “[n][:][NAME]” will display only the name.
-#     strip_workspace_numbers yes
-#     ##strip_workspace_name no
-#
-#     colors {
-#         separator          $purple
-#         background         $darkgrey
-#         statusline         $white
-# #                          		border 		        bg		txt		indicator
-#         #focused_workspace	$mediumgrey	     	$grey		$darkgrey	$purple
-#         #active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-#         #inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-#         #urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-#     }
-# }
 
 # brightnessctl
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
@@ -213,13 +184,16 @@ bindsym Mod1+period exec playerctl next
 bindsym Mod1+comma exec playerctl previous
 
 # borders
-for_window [class=".*"] border pixel 0
+default_border pixel 0
+#for_window [class="^.*"] border pixel 0
+for_window [app_id="firefox"] border none
 gaps inner 10
 gaps outer 1
 
 smart_borders on
 smart_borders no_gaps
 #border_radius 5
+
 
 # set floating (nontiling)for apps needing it
 for_window [class="Yad" instance="yad"] floating enable
@@ -259,8 +233,14 @@ bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d
 exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
-exec_always ibus-daemon -drxR
-exec swaybg --image Pictures/wp4892354.jpg
+
+#exec_always ibus-daemon -drxR
+exec --no-startup-id fcitx5 -d
+
+#set $bg ~/Pictures/mr-robot-fsociety-mask-minimalist-minimalism-y7130.jpg
+set $bg ~/Pictures/wp4892354.jpg
+exec swaymsg output "*" bg $bg fill
+
 exec systemctl --user import-environment
 exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
 exec xinput disable "ELAN Touchscreen"
