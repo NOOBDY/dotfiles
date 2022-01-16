@@ -1,0 +1,10 @@
+/*
+!/picom
+!/i3
+!/i3status
+!/kitty
+!/nvim
+!/sway
+!/waybar
+!.gitignore
+/nvim/autoload/plugged
