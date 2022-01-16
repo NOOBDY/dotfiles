@@ -3,6 +3,8 @@
 !/i3
 !/i3status
 !/kitty
+/kitty/kitty-themes
+/kitty/theme.conf
 !/nvim
 !/sway
 !/waybar
