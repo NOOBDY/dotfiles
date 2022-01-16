@@ -232,17 +232,12 @@ bindsym Mod1+Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
 
 # startup command
+output "*" bg "~/.cache/wallpaper" fill
 exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
-
 #exec_always ibus-daemon -drxR
 exec --no-startup-id fcitx5 -d
-
-#set $bg ~/Pictures/mr-robot-fsociety-mask-minimalist-minimalism-y7130.jpg
-set $bg ~/Pictures/wp4892354.jpg
-exec swaymsg output "*" bg $bg fill
-
 exec systemctl --user import-environment
 exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
 exec xinput disable "ELAN Touchscreen"
