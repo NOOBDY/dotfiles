@@ -9,17 +9,19 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'airblade/vim-gitgutter'
+
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'on': [] }
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'evanleck/vim-svelte'
+Plug 'ap/vim-css-color'
 Plug 'mboughaba/i3config.vim'
 
-Plug 'ap/vim-css-color'
-
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'tpope/vim-surround'
 
 Plug 'vim-airline/vim-airline'
