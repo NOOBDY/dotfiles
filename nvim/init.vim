@@ -30,9 +30,6 @@ highlight GitGutterDelete guifg=#df6883 ctermfg=1
 let g:transparent_enabled = v:true
 let g:tigirs#enabled = 1
 
-" lsp
-nnoremap <buffer><silent> gh <Cmd>lua vim.lsp.buf.hover()<CR>
-inoremap <C-Space> <Cmd>lua vim.lsp.buf.completion()<CR>
 " split shortcuts
 tnoremap <Esc> <C-\><C-n>
 
