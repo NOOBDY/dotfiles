@@ -2,6 +2,7 @@
 !/picom
 !/i3
 !/i3status
+!/rofi
 !/kitty
 /kitty/kitty-themes
 /kitty/theme.conf
