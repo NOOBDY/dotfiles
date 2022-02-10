@@ -3,6 +3,7 @@
 !/i3
 !/i3status
 !/rofi
+!/dunst
 !/kitty
 /kitty/kitty-themes
 /kitty/theme.conf
