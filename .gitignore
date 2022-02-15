@@ -6,7 +6,7 @@
 !/dunst
 !/fcitx5
 !/ranger
-/ranger/__pycache__
+**/__pycache__
 !/kitty
 /kitty/kitty-themes
 !/nvim
