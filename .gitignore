@@ -5,9 +5,10 @@
 !/rofi
 !/dunst
 !/fcitx5
+!/ranger
+/ranger/__pycache__
 !/kitty
 /kitty/kitty-themes
-/kitty/theme.conf
 !/nvim
 !/sway
 !/swaylock
