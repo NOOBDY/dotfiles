@@ -15,6 +15,8 @@ set termguicolors
 set nohlsearch
 set nowrap
 
+set guifont:Cascadia\ Mono:h12
+
 colorscheme monokai_pro
 
 "let g:airline_section_b = '%{strftime("%c")}'
@@ -29,6 +31,8 @@ highlight GitGutterDelete guifg=#df6883 ctermfg=1
 
 let g:transparent_enabled = v:true
 let g:tigirs#enabled = 1
+
+let g:neovide_transparency=0.7
 
 " split shortcuts
 tnoremap <Esc> <C-\><C-n>
@@ -45,6 +49,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>
+nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <Esc> hllh
 
 "---
 "powerline

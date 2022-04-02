@@ -209,6 +209,7 @@ for_window [class="qt5ct" instance="qt5ct"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
+for_window [app_id="Popsicle"] floating enable
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
@@ -233,12 +234,13 @@ bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d
 
 # startup command
 output "*" bg "~/.cache/wallpaper" fill
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
 #exec_always ibus-daemon -drxR
 exec --no-startup-id fcitx5 -d
 exec systemctl --user import-environment
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
 exec xinput disable "ELAN Touchscreen"

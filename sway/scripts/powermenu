@@ -1,0 +1,5 @@
+#!/bin/bash
+
+entries="Logout Suspend Reboot Shutdown"
+
+selected=$

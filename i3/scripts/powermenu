@@ -118,7 +118,7 @@ menu=(
   [ Reboot]="systemctl reboot"
   [ Suspend]="systemctl suspend"
   [ Lock]="~/.config/i3/scripts/blur-lock.sh"
-  [ Logout]="i3-msg exit"
+  [ Logout]="swaymsg exit"
   [ Cancel]=""
 )
 
@@ -171,7 +171,7 @@ function ask_confirmation() {
   fi
 
   if [ "${confirmed}" == 0 ]; then
-    i3-msg -q "exec ${menu[${selection}]}"
+    swaymsg -q "exec ${menu[${selection}]}"
   fi
 }
 
@@ -180,6 +180,6 @@ if [[ $? -eq 0 && ! -z ${selection} ]]; then
         ${menu_confirm} =~ (^|[[:space:]])"${selection}"($|[[:space:]]) ]]; then
     ask_confirmation
   else
-    i3-msg -q "exec ${menu[${selection}]}"
+    swaymsg -q "exec ${menu[${selection}]}"
   fi
 fi
