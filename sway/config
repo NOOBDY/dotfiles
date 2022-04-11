@@ -4,11 +4,11 @@ font pango:Noto Sans Regular, Font Awesome 10
 
 floating_modifier $mod
 
-input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
+input "1267:12710:ELAN0406:00_04F3:31A6_Touchpad" {
     natural_scroll enabled
     tap enabled
     accel_profile adaptive
-    pointer_accel 0.3
+    pointer_accel 0.5
     # accel_profile flat
     # pointer_accel 1
 }
@@ -22,23 +22,22 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
 
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
 
 bindsym $mod+b split h
-
 bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
@@ -61,15 +60,15 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
 set $ws10 "10"
 
 # switch to workspace
@@ -98,102 +97,97 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 
-# bindsym $mod+Escape exec ~/.config/i3/scripts/blur-lock
-bindsym $mod+Escape exec --no-startup-id sleep 1 && xset dpms force suspend
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width   10 px or 10 ppt
+    bindsym j resize grow   height  10 px or 10 ppt
+    bindsym k resize shrink height  10 px or 10 ppt
+    bindsym l resize grow   width   10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left    resize shrink   width   10 px or 10 ppt
+    bindsym Down    resize grow     height  10 px or 10 ppt
+    bindsym Up      resize shrink   height  10 px or 10 ppt
+    bindsym Right   resize grow     width   10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
+set $darkbluetrans  #08052be6
+set $darkblue       #08052b
+set $lightblue      #5294e2
+set $urgentred      #e53935
+set $white          #ffffff
+set $black          #000000
+set $purple         #e345ff
+set $darkgrey       #383c4a
+set $grey           #b0b5bd
+set $mediumgrey     #8b8b8b
+set $yellowbrown    #e1b700
 
-#class                  border      bg          text        indicator   child border
-client.focused          $lightblue  $darkblue   $white      $purple     $mediumgrey
-client.unfocused        $darkblue   $darkblue   $grey       $purple     $darkgrey
-client.focused_inactive $darkblue   $darkblue   $grey       $purple     $black
-client.urgent           $urgentred  $urgentred  $white      $purple     $yellowbrown
+#class                  border          bg          text        indicator       child border
+client.focused          $mediumgrey     $darkgrey   $white      $grey           $mediumgrey
+client.unfocused        $black          $black      $grey       $black          $black
+client.focused_inactive $darkblue       $darkblue   $grey       $black          $black
+client.urgent           $urgentred      $urgentred  $white      $yellowbrown    $yellowbrown
 
 bar {
     swaybar_command waybar
     workspace_buttons yes
     position top
-#        status_command i3status
     height 20
 }
 
 # brightnessctl
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
 
 # volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym Mod1+Prior              exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 
-bindsym Mod1+Prior exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym Mod1+Next exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
-bindsym Mod1+m exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym Mod1+Next               exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+
+bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym Mod1+m                  exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # media control
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay   exec playerctl play-pause
+bindsym XF86AudioPause  exec playerctl play-pause
+bindsym Mod1+slash      exec playerctl play-pause
 
-bindsym Mod1+slash exec playerctl play-pause
-bindsym Mod1+period exec playerctl next
-bindsym Mod1+comma exec playerctl previous
+bindsym XF86AudioNext   exec playerctl next
+bindsym Mod1+period     exec playerctl next
+
+bindsym XF86AudioPrev   exec playerctl previous
+bindsym Mod1+comma      exec playerctl previous
 
 # borders
-default_border pixel 0
+default_border pixel 1
 #for_window [class="^.*"] border pixel 0
-for_window [app_id="firefox"] border none
+#for_window [app_id="firefox"] border none
 gaps inner 10
 gaps outer 1
 
-smart_borders on
-smart_borders no_gaps
+#smart_borders on
+#smart_borders no_gaps
 #border_radius 5
-
 
 # set floating (nontiling)for apps needing it
 for_window [class="Yad" instance="yad"] floating enable
@@ -203,27 +197,17 @@ for_window [class="Steam" instance="Steam" title="Friends List"] floating enable
 for_window [class="Steam" instance="Steam" title="Steam - News"] floating enable
 
 # set floating (nontiling) for special apps
-for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [app_id="Popsicle"] floating enable
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
-
 bindsym $mod+slash exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
-
-#bindsym F9 exec rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym F9 exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
-
 bindsym $mod+t exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
-
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym F10 exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
 
 # screenshot
 bindsym Print exec grim - | wl-copy
@@ -234,13 +218,11 @@ bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d
 
 # startup command
 output "*" bg "~/.cache/wallpaper" fill
+seat * hide_cursor when-typing enable
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
-exec --no-startup-id nm-applet
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
-exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
 #exec_always ibus-daemon -drxR
 exec --no-startup-id fcitx5 -d
+exec --no-startup-id gammastep -O 7500K
 exec systemctl --user import-environment
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec xinput set-prop "DLL075B:01 06CB:76AF Touchpad" "libinput Tapping Enabled" 1
-exec xinput disable "ELAN Touchscreen"
