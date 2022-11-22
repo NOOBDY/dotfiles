@@ -14,6 +14,8 @@ set number relativenumber
 set termguicolors
 set nohlsearch
 set nowrap
+set mouse=a
+set scrolloff=5
 
 set guifont:Cascadia\ Mono:h12
 
@@ -50,11 +52,13 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> g? <cmd>lua vim.diagnostic.open_float()<CR>
 nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>
 nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <Esc> hllh
+nnoremap die ggVGd
+nnoremap cie ggVGc
 
 "---
 "powerline
