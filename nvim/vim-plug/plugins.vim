@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'crusoexia/vim-monokai'
 Plug 'fratajczak/one-monokai-vim'
 Plug 'phanviet/vim-monokai-pro'
+Plug 'morhetz/gruvbox'
 
 Plug 'xiyaowong/nvim-transparent'
 call plug#end()

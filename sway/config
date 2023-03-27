@@ -195,6 +195,9 @@ for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends List"] floating enable
 for_window [class="Steam" instance="Steam" title="Steam - News"] floating enable
+for_window [instance="origin.exe"] floating enable
+for_window [class="epicgameslauncher.exe" instance="epicgameslauncher.exe"] floating enable
+for_window [class="steam_app_244210" instance="content manager safe.exe"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
@@ -223,6 +226,6 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 #exec_always ibus-daemon -drxR
 exec --no-startup-id fcitx5 -d
-exec --no-startup-id gammastep -O 7500K
+exec --no-startup-id gammastep -O 7000K
 exec systemctl --user import-environment
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
