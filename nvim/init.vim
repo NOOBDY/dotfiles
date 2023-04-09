@@ -3,6 +3,15 @@ source ~/.config/nvim/lsp/lsp.vim
 source ~/.config/nvim/nvim-tree/tree.vim
 source ~/.config/nvim/cmp/cmp.vim
 
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    }
+}
+require("bufferline").setup{}
+EOF
+
 syntax on
 
 set tabstop=4
@@ -19,7 +28,8 @@ set scrolloff=5
 
 set guifont:Cascadia\ Mono:h12
 
-colorscheme monokai_pro
+"colorscheme monokai_pro
+colorscheme sonokai
 
 "let g:airline_section_b = '%{strftime("%c")}'
 "let g:airline_section_y = 'BN: %{bufnr("%")}'
@@ -35,6 +45,12 @@ let g:transparent_enabled = v:true
 let g:tigirs#enabled = 1
 
 let g:neovide_transparency=0.7
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " split shortcuts
 tnoremap <Esc> <C-\><C-n>
