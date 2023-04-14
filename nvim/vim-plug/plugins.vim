@@ -6,6 +6,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
@@ -18,14 +19,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'nvim-lua/plenary.nvim' " required by haskell-tools.nvim
-
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'on': [] }
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'evanleck/vim-svelte'
-Plug 'ap/vim-css-color'
-Plug 'JosefLitos/vim-i3config'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'mrcjkb/haskell-tools.nvim'
 
 Plug 'jiangmiao/auto-pairs'

@@ -219,6 +219,8 @@ bindsym Shift+Print exec grim -g "$(slurp -d)" - | wl-copy
 bindsym Mod1+Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
 
+bindsym $mod+Shift+r exec sway output eDP-1 disable
+
 # startup command
 output "*" bg "~/.cache/wallpaper" fill
 seat * hide_cursor when-typing enable
