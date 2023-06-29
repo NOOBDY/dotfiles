@@ -13,6 +13,8 @@ input "1267:12710:ELAN0406:00_04F3:31A6_Touchpad" {
     # pointer_accel 1
 }
 
+bindsym $mod+m exit
+
 bindsym $mod+Return exec kitty
 
 bindsym $mod+Shift+q kill
@@ -204,6 +206,8 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
 for_window [app_id="Popsicle"] floating enable
 
+no_focus [title="im-emoji-picker"]
+
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 bindsym $mod+slash exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
 #bindsym F9 exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
@@ -220,6 +224,7 @@ bindsym Mod1+Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
 
 bindsym $mod+Shift+r exec sway output eDP-1 disable
+output HDMI-A-1 scale 1.3
 
 # startup command
 output "*" bg "~/.cache/wallpaper" fill

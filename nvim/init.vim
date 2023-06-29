@@ -4,12 +4,25 @@ source ~/.config/nvim/nvim-tree/tree.vim
 source ~/.config/nvim/cmp/cmp.vim
 
 lua << EOF
+require('telescope').load_extension('media_files')
+require'telescope'.setup {
+  extensions = {
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      -- filetypes = {"png", "webp", "jpg", "jpeg"},
+      -- find command (defaults to `fd`)
+      find_cmd = "find"
+    }
+  },
+}
 require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
     }
 }
 require("bufferline").setup{}
+require("toggleterm").setup()
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
@@ -58,6 +71,8 @@ autocmd BufRead,BufNewFile *.geom set filetype=glsl
 autocmd BufRead,BufNewFile *.frag set filetype=glsl
 autocmd BufRead,BufNewFile *.typ set filetype=typst
 
+autocmd FileType cpp setlocal commentstring=//\ %s
+
 let mapleader=" "
 
 " Using Lua functions
@@ -94,4 +109,14 @@ nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <Esc> hllh
 nnoremap die ggVGd
 nnoremap cie ggVGc
+noremap <C-/> :Commentary<CR>
+" set
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><C-j> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><C-j> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><C-j> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
