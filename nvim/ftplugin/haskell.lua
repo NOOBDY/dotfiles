@@ -1,7 +1,7 @@
 local ht = require('haskell-tools')
 local buffer = vim.api.nvim_get_current_buf()
 local def_opts = { noremap = true, silent = true, }
-ht.start_or_attach {
+ht.start_or_attach = {
   hls = {
     on_attach = function(client, bufnr)
       local opts = vim.tbl_extend('keep', def_opts, { buffer = bufnr, })

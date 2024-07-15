@@ -15,7 +15,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
-Plug 'akinsho/bufferline.nvim'
+" Plug 'akinsho/bufferline.nvim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'kyazdani42/nvim-web-devicons'
@@ -28,13 +28,16 @@ Plug 'akinsho/toggleterm.nvim', { 'tag': '*' }
 
 Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'mrcjkb/haskell-tools.nvim'
+Plug 'mrcjkb/haskell-tools.nvim' ", { 'branch': '1.x.x' }
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'Djancyp/better-comments.nvim'
 
 Plug 'crusoexia/vim-monokai'
 Plug 'fratajczak/one-monokai-vim'

@@ -4,17 +4,36 @@ font pango:Noto Sans Regular, Font Awesome 10
 
 floating_modifier $mod
 
-input "1267:12710:ELAN0406:00_04F3:31A6_Touchpad" {
+input "type:touchpad" {
     natural_scroll enabled
     tap enabled
-    accel_profile adaptive
-    pointer_accel 0.5
-    # accel_profile flat
-    # pointer_accel 1
+    # accel_profile adaptive
+    # pointer_accel 0.5
+    accel_profile flat
+    pointer_accel 1
+    scroll_factor 0.2
 }
+
+input "type:keyboard" {
+    repeat_delay 250
+}
+
+input "5426:618:Razer_Razer_Blade_Keyboard" {
+    xkb_options "ctrl:nocaps"
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_options "ctrl:nocaps"
+}
+
+# output "DP-4" pos 0 0
+output "eDP-1" pos 0 0
+
+output "eDP-1" scale 1.25
 
 bindsym $mod+m exit
 
+# bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec kitty
 
 bindsym $mod+Shift+q kill
@@ -160,11 +179,11 @@ bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
 
 # volume
-bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym Mod1+Prior              exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +2% #increase sound volume
+bindsym Mod1+Prior              exec pactl set-sink-volume @DEFAULT_SINK@ +2% #increase sound volume
 
-bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
-bindsym Mod1+Next               exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -2% #decrease sound volume
+bindsym Mod1+Next               exec pactl set-sink-volume @DEFAULT_SINK@ -2% #decrease sound volume
 
 bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 bindsym Mod1+m                  exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
@@ -184,7 +203,7 @@ bindsym Mod1+comma      exec playerctl previous
 default_border pixel 1
 #for_window [class="^.*"] border pixel 0
 #for_window [app_id="firefox"] border none
-gaps inner 10
+gaps inner 5
 gaps outer 1
 
 #smart_borders on
@@ -219,16 +238,32 @@ bindsym $mod+t exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
 # screenshot
 bindsym Print exec grim - | wl-copy
 bindsym Shift+Print exec grim -g "$(slurp -d)" - | wl-copy
+bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 
-bindsym Mod1+Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
-bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" "~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
+bindsym Mod1+Print exec grim -o $HOME/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym Mod1+Shift+Print exec grim -g "$(slurp -d)" $HOME/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 
-bindsym $mod+Shift+r exec sway output eDP-1 disable
-output HDMI-A-1 scale 1.3
+bindsym $mod+Shift+r output eDP-1 disable
+# output HDMI-A-1 scale 1.3
+
+bindsym $mod+period exec rofimoji --files emoji math fontawesome6
+
+bindsym $mod+Alt+l move workspace to output right
+bindsym $mod+Alt+h move workspace to output left
+
+bindsym $mod+u output 'eDP-1' disable
+bindsym $mod+i output 'eDP-1' enable
+bindsym $mod+o output 'eDP-1' power off
+bindsym $mod+p output 'eDP-1' power on
+
+# bindsym Alt_L+j exec wtype -k 'Down'
+# bindsym Alt_L+k exec wtype -k 'Up'
+# bindsym Alt_R+l exec wtype -k 'L'
 
 # startup command
 output "*" bg "~/.cache/wallpaper" fill
-seat * hide_cursor when-typing enable
+# seat * hide_cursor when-typing enable
+seat * hide_cursor when-typing disable
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 #exec_always ibus-daemon -drxR

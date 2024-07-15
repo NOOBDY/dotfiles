@@ -1,6 +1,6 @@
 source ~/.config/nvim/vim-plug/plugins.vim
 " source ~/.config/nvim/lsp/lsp.vim
-source ~/.config/nvim/nvim-tree/tree.vim
+" source ~/.config/nvim/nvim-tree/tree.vim
 source ~/.config/nvim/cmp/cmp.vim
 
 lua << EOF
@@ -21,8 +21,9 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
     }
 }
-require("bufferline").setup{}
+-- require("bufferline").setup{}
 require("toggleterm").setup()
+require("better-comment").Setup()
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
@@ -32,6 +33,11 @@ require("mason-lspconfig").setup_handlers {
     function (server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup {}
     end,
+}
+require'lspconfig'.glsl_analyzer.setup{
+    on_attach = function()
+        print("attached")
+    end
 }
 EOF
 
@@ -66,10 +72,12 @@ let g:transparent_enabled = v:true
 
 let g:neovide_transparency=0.7
 
-autocmd BufRead,BufNewFile *.vert set filetype=glsl
-autocmd BufRead,BufNewFile *.geom set filetype=glsl
-autocmd BufRead,BufNewFile *.frag set filetype=glsl
+" autocmd BufRead,BufNewFile *.vert set filetype=glsl
+" autocmd BufRead,BufNewFile *.geom set filetype=glsl
+" autocmd BufRead,BufNewFile *.frag set filetype=glsl
+" autocmd BufRead,BufNewFile *.comp set filetype=glsl
 autocmd BufRead,BufNewFile *.typ set filetype=typst
+autocmd BufRead,BufNewFile *.agda set filetype=agda
 
 autocmd FileType cpp setlocal commentstring=//\ %s
 
@@ -106,6 +114,7 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.format()<CR>
 nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>
 nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <Esc> hllh
 nnoremap die ggVGd
 nnoremap cie ggVGc
