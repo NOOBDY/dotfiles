@@ -10,6 +10,7 @@ return {
         "c",
         "cpp",
         "diff",
+        "gleam",
         "go",
         "haskell",
         "html",
