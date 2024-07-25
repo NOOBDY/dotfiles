@@ -2,6 +2,8 @@ return {
   "vim-airline/vim-airline",
   "vim-airline/vim-airline-themes",
 
+  "airblade/vim-gitgutter",
+
   "Djancyp/better-comments.nvim",
 
   "crusoexia/vim-monokai",

@@ -1,8 +1,9 @@
 return {
-  "kyazdani42/nvim-web-devicons",
-  "kyazdani42/nvim-tree.lua",
+  "nvim-tree/nvim-web-devicons",
 
   "jiangmiao/auto-pairs",
   "tpope/vim-sleuth",
-  "tpope/vim-surround"
+  "tpope/vim-surround",
+  "tpope/vim-commentary",
+  "farmergreg/vim-lastplace",
 }

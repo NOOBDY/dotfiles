@@ -14,14 +14,15 @@ return {
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
       function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          require("lspconfig")[server_name].setup {
+            capabilities = capabilities
+          }
       end,
     }
 
     require("mason-tool-installer").setup {
       ensure_installed = {
-        "autopep8",
-        "black",
         "clang-format",
         "clangd",
         "cmake-language-server",
@@ -36,8 +37,8 @@ return {
         "ocaml-lsp",
         "ocamlformat",
         "prettier",
-        "pylint",
         "pyright",
+        "ruff",
         "rust-analyzer",
         "svelte-language-server",
         "tailwindcss-language-server",
