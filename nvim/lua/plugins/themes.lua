@@ -16,6 +16,7 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
+      vim.g.sonokai_style = "atlantis"
       vim.cmd([[colorscheme sonokai]])
     end,
   },

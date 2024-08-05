@@ -1,13 +1,5 @@
 require("config.lazy")
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "gleam",
---   callback = function ()
-    require("lspconfig").gleam.setup({})
-  -- end
--- })
-
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "cpp",
   command = "setlocal commentstring=//\\ %s"
@@ -27,6 +19,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.hlsearch = false
 vim.opt.scrolloff = 3
+vim.opt.wrap = false
 
 vim.keymap.set("t", "<Esc>", "<nop>", {})
 vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h", {})
@@ -48,4 +41,13 @@ vim.keymap.set("n", "cie", "ggVGc", {});
 vim.keymap.set("n", "vie", "ggVG", {});
 vim.keymap.set("", "<C-/>", ":Commentary<CR>", {});
 
-vim.o.guifont = "Cascadia Mono:h12"
+if vim.g.neovide then
+  vim.o.guifont = "Cascadia Mono:h12"
+  vim.g.neovide_transparency = 1.0
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_cursor_trail_size = 0.2
+  vim.g.neovide_cursor_animation_length = 0.03
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_cursor_smooth_blink = true
+  -- vim.g.transparent_enabled = false
+end

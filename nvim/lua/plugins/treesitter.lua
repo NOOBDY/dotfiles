@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-context"
+  },
   build = ":TSUpdate",
   priority = 1000,
   config = function()
@@ -15,7 +18,10 @@ return {
         "haskell",
         "html",
         "javascript",
+        "latex",
         "lua",
+        "markdown",
+        "markdown_inline",
         "nix",
         "python",
         "rust",
@@ -28,6 +34,8 @@ return {
         "zig"
       },
       auto_install = true,
+      sync_install = false,
+      ignore_install = {},
       highlight = {
         enable = true,
       }

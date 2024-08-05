@@ -6,8 +6,26 @@ return {
   config = function()
     local null_ls = require("null-ls")
     null_ls.setup {
-      source = {
-        null_ls.builtins.completion.spell
+      sources = {
+        null_ls.builtins.completion.spell,
+        null_ls.builtins.formatting.prettierd.with({
+          filetypes = {
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "css",
+            "scss",
+            "html",
+            "json",
+            "yaml",
+            "markdown",
+            "graphql",
+            "md",
+            "txt",
+          },
+          only_local = "node_modules/.bin",
+        }),
       }
     }
   end

@@ -3,53 +3,87 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'folke/neodev.nvim', opts = {} },
+    "jay-babu/mason-null-ls.nvim",
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "luvit-meta/library", words = { "vim%.uv" } },
+        },
+      },
+    },
+    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+    {                                        -- optional completion source for require statements and module annotations
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        opts.sources = opts.sources or {}
+        table.insert(opts.sources, {
+          name = "lazydev",
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        })
+      end,
+    },
   },
   config = function()
     require("mason").setup()
-    require("mason-lspconfig").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "clangd",
+        "cmake",
+        "emmet_language_server",
+        "eslint",
+        "glsl_analyzer",
+        "gopls",
+        "html",
+        "lua_ls",
+        "nil_ls",
+        "ocamllsp",
+        "pyright",
+        "ruff",
+        "rust_analyzer",
+        "svelte",
+        "tailwindcss",
+        "tsserver",
+        "typst_lsp",
+        "zls",
+      },
+      automatic_installation = true
+    })
     require("mason-lspconfig").setup_handlers {
       -- The first entry (without a key) will be the default handler
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
-      function (server_name) -- default handler (optional)
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities
-          }
+      function(server_name) -- default handler (optional)
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        require("lspconfig")[server_name].setup {
+          capabilities = capabilities
+        }
       end,
     }
-
-    require("mason-tool-installer").setup {
+    local null_ls = require("null-ls")
+    require("mason-null-ls").setup({
       ensure_installed = {
         "clang-format",
-        "clangd",
-        "cmake-language-server",
-        "elm-language-server",
-        "emmet-language-server",
-        "eslint-lsp",
-        "glsl_analyzer",
-        "gopls",
-        "html-lsp",
-        "lua-language-server",
-        "nil",
-        "ocaml-lsp",
         "ocamlformat",
-        "prettier",
-        "pyright",
-        "ruff",
-        "rust-analyzer",
-        "svelte-language-server",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "typst-lsp",
+        "prettierd",
         "typstfmt",
-        "zls",
-      }
-    }
+      },
+      automatic_installation = true,
+      handlers = {
+        function() end,
+        prettierd = function(source_name, methods)
+          null_ls.register(null_ls.builtins.formatting.prettierd)
+        end
+      },
+    })
+    require("lspconfig").gleam.setup({})
 
     local builtin = require("telescope.builtin")
+    vim.keymap.set("n", "gp", builtin.diagnostics, {})
+    vim.keymap.set("n", "gr", builtin.lsp_references, {})
     vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
     vim.keymap.set("n", "gi", builtin.lsp_implementations, {})
     vim.keymap.set("n", "g?", vim.diagnostic.open_float, {})
