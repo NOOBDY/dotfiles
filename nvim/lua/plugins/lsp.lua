@@ -50,25 +50,29 @@ return {
         "typst_lsp",
         "zls",
       },
-      automatic_installation = true
-    })
-    require("mason-lspconfig").setup_handlers {
+      automatic_installation = {
+        exclude = { "tsserver" }
+      },
       -- The first entry (without a key) will be the default handler
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
-      function(server_name) -- default handler (optional)
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        require("lspconfig")[server_name].setup {
-          capabilities = capabilities
-        }
-      end,
-    }
+      handlers = {
+        function(server_name) -- default handler (optional)
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          require("lspconfig")[server_name].setup {
+            capabilities = capabilities
+          }
+        end,
+        tsserver = function()
+        end
+      }
+    })
     local null_ls = require("null-ls")
     require("mason-null-ls").setup({
       ensure_installed = {
         "clang-format",
         "ocamlformat",
-        "prettierd",
+        "prettier",
         "typstfmt",
       },
       automatic_installation = true,

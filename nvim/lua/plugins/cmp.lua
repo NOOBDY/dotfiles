@@ -7,8 +7,20 @@ return {
     "hrsh7th/cmp-cmdline",
 
     "hrsh7th/cmp-vsnip",
-    "hrsh7th/vim-vsnip"
+    "hrsh7th/vim-vsnip",
+
+    "luckasRanarison/tailwind-tools.nvim",
+    "onsails/lspkind-nvim",
   },
+  opts = function()
+    return {
+      formatting = {
+        format = require("lspkind").cmp_format({
+          before = require("tailwind-tools.cmp").lspkind_format
+        })
+      }
+    }
+  end,
   config = function()
     local cmp = require("cmp")
 
