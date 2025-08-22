@@ -1,6 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  branch = "master",
+  -- branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-media-files.nvim"
@@ -9,6 +10,18 @@ return {
     require("telescope").load_extension("media_files")
     require("telescope").load_extension("persisted")
     require("telescope").setup({
+      pickers = {
+        live_grep = {
+          file_ignore_patterns = { '.git/' },
+          additional_args = function(_)
+            return { "--hidden" }
+          end
+        },
+        find_files = {
+          file_ignore_patterns = { '.git/' },
+          hidden = true
+        }
+      },
       extensions = {
         media_files = {
           -- filetypes whitelist

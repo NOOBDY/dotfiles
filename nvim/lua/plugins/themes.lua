@@ -4,7 +4,7 @@ return {
 
   "airblade/vim-gitgutter",
 
-  "Djancyp/better-comments.nvim",
+  -- "Djancyp/better-comments.nvim",
 
   "crusoexia/vim-monokai",
   "fratajczak/one-monokai-vim",

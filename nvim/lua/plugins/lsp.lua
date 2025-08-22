@@ -33,6 +33,7 @@ return {
       ensure_installed = {
         "clangd",
         "cmake",
+        "dockerls",
         "emmet_language_server",
         "eslint",
         "glsl_analyzer",
@@ -40,50 +41,65 @@ return {
         "html",
         "lua_ls",
         "nil_ls",
-        "ocamllsp",
         "pyright",
+        "reason_ls",
+        "rescriptls",
         "ruff",
         "rust_analyzer",
         "svelte",
         "tailwindcss",
-        "tsserver",
-        "typst_lsp",
+        "templ",
+        "tinymist",
+        "ts_ls",
+        -- "typst-lsp",
         "zls",
       },
       automatic_installation = {
-        exclude = { "tsserver" }
+        exclude = { "ts_ls", "ocamllsp" }
       },
       -- The first entry (without a key) will be the default handler
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
       handlers = {
+        html = function()
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          require("lspconfig").html.setup {
+            capabilities = capabilities,
+            filetype = { "html", "templ" }
+          }
+        end,
         function(server_name) -- default handler (optional)
           local capabilities = require("cmp_nvim_lsp").default_capabilities()
           require("lspconfig")[server_name].setup {
             capabilities = capabilities
           }
-        end,
-        tsserver = function()
         end
+      },
+      automatic_enable = {
+        exclude = {
+          "ts_ls"
+        }
       }
     })
     local null_ls = require("null-ls")
     require("mason-null-ls").setup({
       ensure_installed = {
         "clang-format",
+        "golangci-lint",
         "ocamlformat",
         "prettier",
-        "typstfmt",
+        "ormolu",
+        -- "typstfmt",
       },
       automatic_installation = true,
       handlers = {
-        function() end,
-        prettierd = function(source_name, methods)
-          null_ls.register(null_ls.builtins.formatting.prettierd)
-        end
+        -- prettierd = function(source_name, methods)
+        --   null_ls.register(null_ls.builtins.formatting.prettierd)
+        -- end,
       },
     })
     require("lspconfig").gleam.setup({})
+    require("lspconfig").ocamllsp.setup({})
 
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "gp", builtin.diagnostics, {})

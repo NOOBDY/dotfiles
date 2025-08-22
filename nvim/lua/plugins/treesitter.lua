@@ -27,6 +27,7 @@ return {
         "rust",
         "svelte",
         "sql",
+        "templ",
         "tsx",
         "typescript",
         "typst",
